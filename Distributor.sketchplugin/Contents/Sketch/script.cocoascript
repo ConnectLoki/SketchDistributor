@@ -68,8 +68,9 @@ var Distributor = {
             numberOfRows:2
             numberOfColumns:1];
         var cellArray = [dimensionChoices cells];
-        [[cellArray objectAtIndex:0] setTitle:"Vertically"];
-        [[cellArray objectAtIndex:1] setTitle:"Horizontally"];
+        var titles = [NSArray arrayWithObjects:"Vertically", "Horizontally"];
+        [[cellArray objectAtIndex:0] setTitle:titles[0]];
+        [[cellArray objectAtIndex:1] setTitle:titles[1]];
         [dimensionChoices selectCellAtRow:this.dimension column:0];
         [viewBox addSubview:dimensionChoices];
 
@@ -89,7 +90,7 @@ var Distributor = {
 
         var responseCode = [alert runModal];
 
-        var dimension = [[dimensionChoices selectedCell] title];
+        var dimension = [titles objectAtIndex:[dimensionChoices selectedRow]];
         return [responseCode, dimension, [spacingField stringValue]];
     },
 
